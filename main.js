@@ -1,12 +1,12 @@
 // Project Data
 const projects = [
     {
-        title: "Industrial Automation System",
+        title: "6 D.O.F Industrial Robotic Arm (Ongoing)",
         category: "Automation",
-        image: "/image.webp",
-        description: "Developed and implemented a complete industrial automation system for manufacturing process optimization, resulting in 30% efficiency improvement.",
-        link: "#",
-        technologies: ["PLC", "SCADA", "HMI"]
+        image: "image/6 DOF ROBOT ARM.png",
+        description: "A 6-DOF industrial robotic arm manipulator designed for precise movements and accurate control of the end-effector’s position and orientation.",
+        link: "https://docs.google.com/spreadsheets/d/197hFK90A5LqaXzbLAdKvCSzpT-AuTpc3IZceeHGMIfc/edit?usp=sharing",
+        technologies: ["Teensy", "Motors", "Drivers" ,"Sensors"]
     },
     {
         title: "Temperature Monitor with Alarm and Display Modes",
@@ -17,28 +17,20 @@ const projects = [
         technologies: ["ATMega", "Embedded C++",]
     },
     {
-        title: "Smart Environmental Monitoring",
-        category: "IoT",
-        image: "/image.webp",
-        description: "Created an IoT-based environmental monitoring system using sensors and cloud integration for real-time data analysis.",
-        link: "#",
-        technologies: ["Arduino", "ESP32", "AWS"]
-    },
-    {
-        title: "Automated Quality Control",
+        title: "Youth Guild Grand Vesak Lantern (2024)",
         category: "Machine Vision",
-        image: "/image.webp",
-        description: "Implemented a computer vision system for automated quality control in production lines using advanced image processing.",
-        link: "#",
-        technologies: ["OpenCV", "Python", "TensorFlow"]
+        image: "image/Vesak Lantern.jpg",
+        description: "The 'Youth Guild Grand Vesak Lantern 2024' symbolizes unity and creativity, blending tradition and innovation in a stunning Vesak celebration.",
+        link: "https://drive.google.com/drive/folders/1wUqFGpYFrIM7l3MIdjRlzkZrRcCDMW98?usp=sharing",
+        technologies: ["arduino", "all",]
     },
     {
-        title: "Process Control System",
+        title: "Automatic WhiteBoard Cleaner",
         category: "Automation",
-        image: "/image.webp",
-        description: "Designed and implemented a process control system for chemical plant operations with real-time monitoring.",
-        link: "#",
-        technologies: ["DCS", "PID Control", "Sensors"]
+        image: "image/AUTOMATIC White Board.jpg",
+        description: "An automatic whiteboard cleaner is a motorized device that efficiently erases whiteboards using a moving mechanism controlled by a microcontroller.",
+        link: "https://drive.google.com/drive/folders/1Xz4vS0lWyMyrhqXMLqem0irS_JPy9Eb3?usp=sharing",
+        technologies: ["IC", "Sensors", "Actuators"]
     }
 ];
 
