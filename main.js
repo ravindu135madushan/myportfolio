@@ -11,7 +11,7 @@ const projects = [
     {
         title: "Temperature Monitor with Alarm and Display Modes",
         category: "IoT",
-        image: "/image/Front.jpg",
+        image: "image/Front.jpg",
         description: "Created an IoT-based environmental monitoring system using IC, LED, BUTTON for data analysis.",
         link: "https://www.linkedin.com/in/ravindu-madushan-57944a301/details/projects/?profileUrn=urn%3Ali%3Afsd_profile%3AACoAAE0hSq0Bp0bRFqy1zWfoF-E3GrGYuUwzHtE",
         technologies: ["ATMega", "Embedded C++",]
