@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravindu Madushan - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">Portfolio</a>
+            <a href="#" class="logo">RM.</a>
             <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,25 +26,31 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h3>Hi,</h3>
-                    <h1>I'm Ravindu Madushan</h1>
-                    <h3>Automation <span class="highlight">Undergraduate Student</span></h3>
-                    <p>
-                        A comprehensive undergraduate student focusing on the principles and applications
-                        of instrumentation and automation in various technological and industrial settings.
+                    <span class="hero-greeting">Hello, I'm</span>
+                    <h1 class="hero-name">Ravindu Madushan</h1>
+                    <h2 class="hero-title">I'm a <span id="typed-text"></span></h2>
+                    <p class="hero-description">
+                        Passionate about creating innovative automation solutions and pushing the boundaries
+                        of technology to solve real-world problems.
                     </p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/ravindu.max.5473" class="social-link"><i
-                                class="fab fa-facebook"></i></a>
-                        <a href="https://www.linkedin.com/in/ravindu-madushan/" class="social-link"><i
-                                class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/ravindu135madushan" class="social-link"><i
-                                class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/ravindu.max.5473" class="social-link" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ravindu-madushan/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/ravindu135madushan" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
-                    <a href="cv/Ravindu Madushan resume.pdf" class="btn">Download CV</a>
+                    <a href="cv/Ravindu Madushan resume.pdf" class="cv-button" target="_blank" data-aos="fade-up">
+                        <i class="fas fa-download"></i>
+                        Download CV
+                    </a>
                 </div>
-                <div class="hero-image">
-                    <img src="image\Ravindu.png" alt="Ravindu Madushan">
+                <div class="hero-image" data-aos="fade-left">
+                    <img src="image/Ravindu.png" alt="Ravindu Madushan">
                 </div>
             </div>
         </div>
@@ -56,29 +59,29 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
+            <h2 class="section-title">About <span class="highlight">Me</span></h2>
             <div class="about-content">
-                <div class="about-image">
-                    <img src="image\life.webp" alt="About">
+                <div class="about-image" data-aos="fade-right">
+                    <img src="image/life.webp" alt="About Me">
                 </div>
-                <div class="about-text">
-                    <h2>About <span class="highlight">Me</span></h2>
-                    <h3>I'm an Automator</h3>
+                <div class="about-text" data-aos="fade-left">
+                    <h3>Automation Engineer & IoT Developer</h3>
                     <div class="about-description">
                         <p>
-                            I am undergraduate student at the University of Colombo, Faculty of Technology,
-                            pursuing an honors degree in Instrumentation and Automation Technology. With a
-                            strong foundation in sensor technology, process control, and automation systems,
-                            I am passionate about leveraging modern technological advancements to innovate
-                            and improve industrial processes.
+                            As an undergraduate at the University of Colombo's Faculty of Technology,
+                            I'm pursuing an honors degree in Instrumentation and Automation Technology.
+                            My passion lies in creating innovative solutions that bridge the gap between
+                            theoretical knowledge and practical applications.
                         </p>
                         <p>
-                            My academic journey has equipped me with robust technical skills and practical
-                            experience in designing and implementing automated systems.
+                            With expertise in sensor technology, process control, and automation systems,
+                            I'm constantly exploring new ways to improve industrial processes and create
+                            efficient automated solutions.
                         </p>
                         <p>
-                            My hands-on projects, including automating systems for industrial applications
-                            and developing control algorithms, have honed my problem-solving abilities and
-                            technical proficiency.
+                            My project portfolio demonstrates my ability to tackle complex challenges
+                            and deliver practical solutions that make a real difference in the field
+                            of automation and control systems.
                         </p>
                     </div>
                 </div>
@@ -89,7 +92,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2>Latest <span class="highlight">Projects</span></h2>
+            <h2 class="section-title">Latest <span class="highlight">Projects</span></h2>
 
             <div class="category-filters">
                 <button class="category-btn active" data-category="All">All</button>
@@ -99,12 +102,11 @@
             </div>
 
             <div class="projects-grid" id="projectsGrid">
-                <!-- Projects will be dynamically inserted here by JavaScript -->
+                <!-- Projects will be dynamically inserted here -->
             </div>
         </div>
     </section>
 
-    <script src="main.js"></script>
+    <script type="module" src="/main.js"></script>
 </body>
-
 </html>
