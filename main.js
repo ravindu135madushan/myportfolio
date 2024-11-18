@@ -1,16 +1,26 @@
 import './style.css';
 import AOS from 'aos';
-import 'aos/dist/aos.css';
 import Typed from 'typed.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Initialize GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 // Initialize AOS
 AOS.init({
-  duration: 1000,
-  once: true,
+    duration: 800,
+    once: true,
+    offset: 100
+});
+
+// Initialize Typed.js
+new Typed('#typed-text', {
+    strings: ['Automation Engineer', 'IoT Developer', 'Robotics Enthusiast'],
+    typeSpeed: 50,
+    backSpeed: 30,
+    loop: true,
+    cursorChar: '|'
 });
 
 // Projects Data
@@ -49,41 +59,13 @@ const projects = [
     }
 ];
 
-// Typed.js initialization
-const typed = new Typed('#typed-text', {
-    strings: ['Automation Engineer', 'IoT Developer', 'Robotics Enthusiast'],
-    typeSpeed: 50,
-    backSpeed: 30,
-    loop: true
-});
-
 // Header scroll effect
 const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// GSAP Animations
-gsap.from('.hero-text', {
-    duration: 1,
-    y: 100,
-    opacity: 0,
-    ease: 'power4.out'
-});
-
-gsap.from('.hero-image', {
-    duration: 1,
-    x: 100,
-    opacity: 0,
-    ease: 'power4.out',
-    delay: 0.5
-});
-
-// Projects initialization
+// Initialize projects
 function initializeProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
     const categoryBtns = document.querySelectorAll('.category-btn');
@@ -144,6 +126,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    initializeProjects();
-});
+document.addEventListener('DOMContentLoaded', initializeProjects);
