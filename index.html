@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravindu Madushan - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -26,14 +30,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="hero-greeting">Hello, I'm</span>
-                    <h1 class="hero-name">Ravindu Madushan</h1>
-                    <h2 class="hero-title">I'm a <span id="typed-text"></span></h2>
-                    <p class="hero-description">
+                    <span class="hero-greeting" data-aos="fade-up">Hello, I'm</span>
+                    <h1 class="hero-name" data-aos="fade-up" data-aos-delay="100">Ravindu Madushan</h1>
+                    <h2 class="hero-title" data-aos="fade-up" data-aos-delay="200">I'm a <span id="typed-text"></span>
+                    </h2>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
                         Passionate about creating innovative automation solutions and pushing the boundaries
                         of technology to solve real-world problems.
                     </p>
-                    <div class="social-links">
+                    <div class="social-links" data-aos="fade-up" data-aos-delay="400">
                         <a href="https://www.facebook.com/ravindu.max.5473" class="social-link" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -44,12 +49,14 @@
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
-                    <a href="cv/Ravindu Madushan resume.pdf" class="cv-button" target="_blank" data-aos="fade-up">
-                        <i class="fas fa-download"></i>
-                        Download CV
-                    </a>
+                    <div class="cv-button-wrapper" data-aos="fade-up" data-aos-delay="500">
+                        <a href="cv/Ravindu Madushan resume.pdf" class="cv-button" download>
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-image" data-aos="fade-left">
+                <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
                     <img src="image/Ravindu.png" alt="Ravindu Madushan">
                 </div>
             </div>
@@ -59,7 +66,7 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About <span class="highlight">Me</span></h2>
+            <h2 class="section-title" data-aos="fade-up">About <span class="highlight">Me</span></h2>
             <div class="about-content">
                 <div class="about-image" data-aos="fade-right">
                     <img src="image/life.webp" alt="About Me">
@@ -92,9 +99,9 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Latest <span class="highlight">Projects</span></h2>
+            <h2 class="section-title" data-aos="fade-up">Latest <span class="highlight">Projects</span></h2>
 
-            <div class="category-filters">
+            <div class="category-filters" data-aos="fade-up">
                 <button class="category-btn active" data-category="All">All</button>
                 <button class="category-btn" data-category="Automation">Automation</button>
                 <button class="category-btn" data-category="IoT">IoT</button>
@@ -107,6 +114,9 @@
         </div>
     </section>
 
-    <script type="module" src="/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
