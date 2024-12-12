@@ -25,6 +25,15 @@ new Typed('#typed-text', {
 
 // Projects Data
 const projects = [
+
+    {
+        title: "Safty System For Vehicle",
+        category: "IoT",
+        video:"image/WhatsApp Image 2024-12-12 at 09.53.00_e0e1dedf.jpg",
+        description: "A web-based system for real-time sensor monitoring and control with gyroscope, color, and pressure sensors, featuring live data updates and LED control.",
+        link: "https://github.com/ravindu135madushan/SaferDashboard",
+        technologies: ["ESP32", "Arduino"]
+    },
     {
         title: "6 D.O.F Industrial Robotic Arm",
         category: "Automation",
