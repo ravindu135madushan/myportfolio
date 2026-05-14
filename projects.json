@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Automated Conveyor System",
+    "description": "A fully automated conveyor belt system with PLC control, sensor integration, and variable speed control for industrial packaging applications.",
+    "category": "Automation",
+    "tags": ["PLC", "Sensors", "VFD", "SCADA"],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "icon": "🏭"
+  },
+  {
+    "id": 2,
+    "title": "Smart Home IoT Hub",
+    "description": "Centralized IoT control system for home automation featuring temperature monitoring, lighting control, and security integration via mobile app.",
+    "category": "IoT",
+    "tags": ["Arduino", "ESP32", "MQTT", "Mobile App"],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "icon": "🏠"
+  },
+  {
+    "id": 3,
+    "title": "Defect Detection Vision System",
+    "description": "Machine vision system using OpenCV and Python for real-time quality inspection and defect detection in manufacturing lines.",
+    "category": "Machine Vision",
+    "tags": ["Python", "OpenCV", "AI", "Camera"],
+    "liveUrl": "#",
+    "githubUrl": "#",
+    "icon": "👁"
+  }
+]
