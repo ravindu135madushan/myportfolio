@@ -368,11 +368,6 @@
             z-index: 2;
         }
 
-        .project-emoji {
-            font-size: 3rem;
-            z-index: 2;
-        }
-
         .project-category-badge {
             position: absolute;
             top: 1rem;
@@ -687,6 +682,50 @@
             color: var(--accent);
         }
 
+        /* JSON Export Box */
+        .json-export-box {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+        }
+
+        .json-export-box label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .json-export-box code {
+            background: var(--bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .json-export-box textarea {
+            width: 100%;
+            height: 180px;
+            padding: 0.75rem;
+            background: #0b1120;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            color: var(--text);
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            resize: vertical;
+        }
+
+        .json-export-box p {
+            margin-top: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -765,6 +804,7 @@
             }
         }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 
@@ -880,7 +920,7 @@
             </div>
 
             <div class="projects-grid" id="projectsGrid">
-                <!-- Projects loaded dynamically -->
+                <!-- Projects loaded dynamically from projects.json -->
             </div>
         </div>
     </section>
@@ -949,6 +989,17 @@
                     <button type="submit" class="submit-btn" id="submitBtn">Add Project</button>
                     <button type="button" class="cancel-btn" style="display: none;" id="cancelBtn"
                         onclick="resetForm()">Cancel</button>
+
+                    <!-- JSON Export Box -->
+                    <div id="jsonExport" class="json-export-box">
+                        <label>
+                            <i class="fas fa-code"></i> Updated Projects JSON — Copy this and paste it into your <code>projects.json</code> file on GitHub:
+                        </label>
+                        <textarea id="jsonOutput" readonly></textarea>
+                        <p>
+                            After copying, go to your GitHub repo &rarr; <code>projects.json</code> &rarr; Edit &rarr; Paste &rarr; Commit. Wait 1-2 minutes for GitHub Pages to update.
+                        </p>
+                    </div>
                 </form>
             </div>
 
@@ -1003,8 +1054,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        // Data Management - Load from localStorage or use defaults
-        let projects = JSON.parse(localStorage.getItem('rm_projects')) || [
+        // Default fallback projects if projects.json fails to load
+        let defaultProjects = [
             {
                 id: 1,
                 title: "Automated Conveyor System",
@@ -1037,15 +1088,31 @@
             }
         ];
 
+        let projects = [];
         let isAuthenticated = sessionStorage.getItem('rm_admin_auth') === 'true';
         let editingId = null;
         let currentFilter = 'All';
+
+        // Load projects from projects.json (works on GitHub Pages)
+        async function loadProjects() {
+            try {
+                const response = await fetch('projects.json?v=' + Date.now());
+                if (!response.ok) throw new Error('Failed to load');
+                projects = await response.json();
+            } catch (err) {
+                console.warn('Could not load projects.json, using defaults:', err);
+                projects = JSON.parse(JSON.stringify(defaultProjects));
+            }
+            renderProjects();
+            if (document.getElementById('admin').classList.contains('active')) {
+                renderAdminList();
+            }
+        }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             AOS.init({ duration: 1000, once: true });
 
-            // Typed.js
             new Typed('#typed-text', {
                 strings: ['Automation Engineer', 'IoT Developer', 'Problem Solver', 'Tech Enthusiast'],
                 typeSpeed: 50,
@@ -1054,26 +1121,22 @@
                 loop: true
             });
 
-            renderProjects();
+            loadProjects();
         });
 
         // Navigation
         function showSection(sectionId) {
-            // Hide all sections
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            // Show target
             document.getElementById(sectionId).classList.add('active');
 
-            // Update nav active state
             document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
             const activeLink = document.querySelector(`button[onclick="showSection('${sectionId}')"]`);
             if (activeLink) activeLink.classList.add('active');
 
-            // Scroll to top
             window.scrollTo(0, 0);
-
-            // Refresh AOS
             setTimeout(() => AOS.refresh(), 100);
+
+            if (sectionId === 'admin') renderAdminList();
         }
 
         // Render Public Projects
@@ -1114,7 +1177,6 @@
                 </div>
             `).join('');
 
-            // Update filter buttons
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.category === currentFilter);
             });
@@ -1149,7 +1211,6 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // CHANGE THESE CREDENTIALS BEFORE DEPLOYING!
             if (username === 'admin' && password === '0332247214@Rs') {
                 isAuthenticated = true;
                 sessionStorage.setItem('rm_admin_auth', 'true');
@@ -1217,7 +1278,7 @@
                 projects.push(projectData);
             }
 
-            saveProjects();
+            showExport();
             resetForm();
             renderAdminList();
             renderProjects();
@@ -1250,7 +1311,6 @@
             document.getElementById('submitBtn').textContent = 'Update Project';
             document.getElementById('cancelBtn').style.display = 'inline-block';
 
-            // Scroll to form
             document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -1258,7 +1318,7 @@
             if (!confirm('Are you sure you want to delete this project?')) return;
 
             projects = projects.filter(p => p.id !== id);
-            saveProjects();
+            showExport();
             renderAdminList();
             renderProjects();
         }
@@ -1276,8 +1336,15 @@
             document.getElementById('previewImg').src = '';
         }
 
-        function saveProjects() {
-            localStorage.setItem('rm_projects', JSON.stringify(projects));
+        // Show JSON export for GitHub update
+        function showExport() {
+            const exportDiv = document.getElementById('jsonExport');
+            const jsonOutput = document.getElementById('jsonOutput');
+            if (exportDiv && jsonOutput) {
+                jsonOutput.value = JSON.stringify(projects, null, 2);
+                exportDiv.style.display = 'block';
+                exportDiv.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Close modal on outside click
@@ -1287,12 +1354,10 @@
             }
         });
 
-        // Keyboard shortcut - Escape to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
 
-        // Image preview handler
         function previewImage(input) {
             const previewDiv = document.getElementById('imagePreview');
             const previewImg = document.getElementById('previewImg');
